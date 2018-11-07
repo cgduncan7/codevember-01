@@ -21,8 +21,8 @@ function Palette(s,a,b,c,d) {
  * Returns a p5.color object in RGB space
  * @returns {color}
  */
-Palette.prototype.getColor = function(s, t) {
-  const l = p5.Vector.add(this.a, this.b).add(0.0);
+Palette.prototype.getColor = function(t) {
+  const l = p5.Vector.add(this.a, this.b);
   const r = p5.Vector.mult(this.c, t).add(this.d).mult(Math.PI * 2.0);
   const cr = this.s.createVector(Math.cos(r.x), Math.cos(r.y), Math.cos(r.z));
   const result = p5.Vector.mult(cr, l);
