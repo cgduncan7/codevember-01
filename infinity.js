@@ -18,7 +18,7 @@ infinity.prototype.draw = function () {
   push();
   translate(width/2,height/2);
   stroke(this.color);
-  strokeWeight(this.size);
-  point(this.x, this.y);
+  fill(this.color);
+  ellipse(this.x, this.y, this.size, this.size);
   pop();
 };

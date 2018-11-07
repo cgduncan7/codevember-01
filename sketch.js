@@ -3,7 +3,7 @@
  */
 
 // #region settings
-const framerate = 60;
+const framerate = 120;
 const w = window.innerWidth;
 const h = window.innerHeight;
 // #endregion
@@ -31,7 +31,7 @@ function setup() {
   const maxSize = 25;
   const minSpeed = 0.01;
   const maxSpeed = 0.025;
-  const numInfinities = 50;
+  const numInfinities = 1;
   infinities = [];
   
   for (let i = 0; i < numInfinities; i++) {
@@ -49,6 +49,10 @@ function setup() {
 
 function draw() {
   background(bg);
+  stroke(255);
+  fill(255);
+  textSize(30);
+  text(Math.floor(frameRate()), 100, 100);
 
   for (let infinity of infinities) {
     infinity.update();
