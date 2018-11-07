@@ -39,14 +39,12 @@ function setup() {
     const size = random(minSize, maxSize);
     const speed = random(minSpeed, maxSpeed);
     const color = palette.getColor(random());
-    color.setAlpha(100);
     infinities.push(new infinity(radius, color, size, speed));
   }
 
   bg = lerpColor(palette.getColor(random()), color('black'), 0.85);
 
   background(bg);
-  bg.setAlpha(50);
 }
 
 function draw() {
