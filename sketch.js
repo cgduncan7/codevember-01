@@ -13,8 +13,9 @@ var palette;
 var bg;
 
 // #region p5
+p5.disableFriendlyErrors = true;
 function setup() {
-  var p5canvas = createCanvas(w, h);
+  const p5canvas = createCanvas(w, h, P2D);
   canvas = p5canvas.canvas;
   frameRate(framerate);
 

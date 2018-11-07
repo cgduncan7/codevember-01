@@ -23,7 +23,7 @@ function Palette(a,b,c,d) {
 Palette.prototype.getColor = function(t) {
   const l = p5.Vector.add(this.a, this.b).add(0.0);
   const r = p5.Vector.mult(this.c, t).add(this.d).mult(TWO_PI);
-  const cr = createVector(cos(r.x), cos(r.y), cos(r.z));
+  const cr = createVector(Math.cos(r.x), Math.cos(r.y), Math.cos(r.z));
   const result = p5.Vector.mult(cr, l);
   return color(map(result.x, -1, 1, 0, 255), map(result.y, -1, 1, 0, 255), map(result.z, -1, 1, 0, 255));
 }

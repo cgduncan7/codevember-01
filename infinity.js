@@ -9,8 +9,8 @@ function infinity(radius, color, size, speed) {
 }
 
 infinity.prototype.update = function () {
-  this.x = this.radius * sin(this.t);
-  this.y = (this.radius / 3.0) * sin(2*this.t);
+  this.x = this.radius * Math.sin(this.t);
+  this.y = (this.radius / 3.0) * Math.sin(2*this.t);
   this.t += this.speed;
 }
 
