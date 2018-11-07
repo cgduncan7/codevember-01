@@ -1,65 +1,67 @@
 /**
- * test3d
+ * sketch
  */
+var s = function(sketch) {
+  // #region settings
+  const framerate = 120;
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  // #endregion
 
-// #region settings
-const framerate = 120;
-const w = window.innerWidth;
-const h = window.innerHeight;
-// #endregion
+  var infinities;
+  var palette;
+  var bg;
 
-var infinities;
-var palette;
-var bg;
+  // #region p5
+  sketch.setup = function() {
+    const p5canvas = sketch.createCanvas(w, h);
+    canvas = p5canvas.canvas;
+    sketch.frameRate(framerate);
 
-// #region p5
-p5.disableFriendlyErrors = true;
-function setup() {
-  const p5canvas = createCanvas(w, h, P2D);
-  canvas = p5canvas.canvas;
-  frameRate(framerate);
+    const a = sketch.createVector(0.5,0.5,0.5);
+    const b = sketch.createVector(0.5,0.5,0.5);
+    const c = sketch.createVector(1.0,1.0,1.0);
+    const d = sketch.createVector(0.0, 0.33, 0.67);
+    palette = new Palette(sketch,a,b,c,d)
 
-  const a = createVector(0.5,0.5,0.5);
-  const b = createVector(0.5,0.5,0.5);
-  const c = createVector(1.0,1.0,1.0);
-  const d = createVector(0.0, 0.33, 0.67);
-  palette = new Palette(a,b,c,d)
+    const minRadius = w / 6.0;
+    const maxRadius = w / 3.0;
+    const minSize = 10;
+    const maxSize = 25;
+    const minSpeed = 0.01;
+    const maxSpeed = 0.025;
+    const numInfinities = 1;
+    infinities = [];
+    
+    for (let i = 0; i < numInfinities; i++) {
+      const radius = sketch.random(minRadius, maxRadius);
+      const size = sketch.random(minSize, maxSize);
+      const speed = sketch.random(minSpeed, maxSpeed);
+      const color = palette.getColor(sketch.random());
+      infinities.push(new infinity(radius, color, size, speed));
+    }
 
-  const minRadius = width / 6.0;
-  const maxRadius = width / 3.0;
-  const minSize = 10;
-  const maxSize = 25;
-  const minSpeed = 0.01;
-  const maxSpeed = 0.025;
-  const numInfinities = 1;
-  infinities = [];
-  
-  for (let i = 0; i < numInfinities; i++) {
-    const radius = random(minRadius, maxRadius);
-    const size = random(minSize, maxSize);
-    const speed = random(minSpeed, maxSpeed);
-    const color = palette.getColor(random());
-    infinities.push(new infinity(radius, color, size, speed));
+    bg = sketch.lerpColor(palette.getColor(sketch.random()), sketch.color('black'), 0.85);
+
+    sketch.background(bg);
   }
 
-  bg = lerpColor(palette.getColor(random()), color('black'), 0.85);
+  sketch.draw = function() {
+    sketch.background(bg);
+    sketch.stroke(255);
+    sketch.fill(255);
+    sketch.textSize(30);
+    sketch.text(Math.floor(sketch.frameRate()), 100, 100);
 
-  background(bg);
-}
+    for (let infinity of infinities) {
+      infinity.update(sketch);
+    }
 
-function draw() {
-  background(bg);
-  stroke(255);
-  fill(255);
-  textSize(30);
-  text(Math.floor(frameRate()), 100, 100);
-
-  for (let infinity of infinities) {
-    infinity.update();
+    for (let infinity of infinities) {
+      infinity.draw(sketch);
+    }
   }
+  // #endregion
+};
 
-  for (let infinity of infinities) {
-    infinity.draw();
-  }
-}
-// #endregion
+var sketch = new p5(s, document.getElementById('sketch'));

@@ -1,7 +1,7 @@
 function infinity(radius, color, size, speed) {
   this.x = 0;
   this.y = 0;
-  this.t = random(0, 100);
+  this.t = Math.random() * 100.0;
   this.radius = radius;
   this.color = color;
   this.size = size;
@@ -14,11 +14,11 @@ infinity.prototype.update = function () {
   this.t += this.speed;
 }
 
-infinity.prototype.draw = function () {
-  push();
-  translate(width/2,height/2);
-  stroke(this.color);
-  fill(this.color);
-  ellipse(this.x, this.y, this.size, this.size);
-  pop();
+infinity.prototype.draw = function (sketch) {
+  sketch.push();
+  sketch.translate(sketch.width/2,sketch.height/2);
+  sketch.stroke(this.color);
+  sketch.fill(this.color);
+  sketch.ellipse(this.x, this.y, this.size, this.size);
+  sketch.pop();
 };

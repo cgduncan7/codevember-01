@@ -9,7 +9,8 @@
  * @returns {Object}
  */
 
-function Palette(a,b,c,d) {
+function Palette(s,a,b,c,d) {
+  this.s = s;
   this.a = a;
   this.b = b;
   this.c = c;
@@ -20,10 +21,10 @@ function Palette(a,b,c,d) {
  * Returns a p5.color object in RGB space
  * @returns {color}
  */
-Palette.prototype.getColor = function(t) {
+Palette.prototype.getColor = function(s, t) {
   const l = p5.Vector.add(this.a, this.b).add(0.0);
-  const r = p5.Vector.mult(this.c, t).add(this.d).mult(TWO_PI);
-  const cr = createVector(Math.cos(r.x), Math.cos(r.y), Math.cos(r.z));
+  const r = p5.Vector.mult(this.c, t).add(this.d).mult(Math.PI * 2.0);
+  const cr = this.s.createVector(Math.cos(r.x), Math.cos(r.y), Math.cos(r.z));
   const result = p5.Vector.mult(cr, l);
-  return color(map(result.x, -1, 1, 0, 255), map(result.y, -1, 1, 0, 255), map(result.z, -1, 1, 0, 255));
+  return this.s.color(this.s.map(result.x, -1, 1, 0, 255), this.s.map(result.y, -1, 1, 0, 255), this.s.map(result.z, -1, 1, 0, 255));
 }
