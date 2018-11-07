@@ -54,6 +54,9 @@ function draw() {
 
   for (let infinity of infinities) {
     infinity.update();
+  }
+
+  for (let infinity of infinities) {
     infinity.draw();
   }
 }
