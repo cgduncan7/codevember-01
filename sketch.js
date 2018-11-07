@@ -31,7 +31,7 @@ function setup() {
   const maxSize = 25;
   const minSpeed = 0.01;
   const maxSpeed = 0.025;
-  const numInfinities = 100;
+  const numInfinities = 50;
   infinities = [];
   
   for (let i = 0; i < numInfinities; i++) {
