@@ -44,6 +44,7 @@ var s = function(sketch) {
     bg = sketch.lerpColor(palette.getColor(sketch.random()), sketch.color('black'), 0.85);
 
     sketch.background(bg);
+    bg.setAlpha(50);
   }
 
   sketch.draw = function() {

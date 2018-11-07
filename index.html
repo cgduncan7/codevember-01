@@ -6,9 +6,38 @@
     <meta name="keywords" content="codevember, #codevember, creative coding, algorithmic art, p5js, p5, processing">
     <title>CODEVEMBER 01 | Infinity</title>
     <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
-    <style> body {padding: 0; margin: 0;} </style>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      #title {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: white;
+        font-family: monospace;
+        opacity: 0;
+        transition: 1s opacity;
+        animation-name: fade-out;
+        animation-duration: 3s;
+      }
+
+      #title:hover {
+        opacity: 1;
+      }
+
+      @keyframes fade-out {
+        0%,67% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+    </style>
   </head>
   <body>
+    <div id="title">codevember #01 | Infinity</div>
     <div id="sketch"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
     <script src="palette.js"></script>
