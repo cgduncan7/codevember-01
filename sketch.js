@@ -30,7 +30,7 @@ var s = function(sketch) {
     const maxSize = 25;
     const minSpeed = 0.01;
     const maxSpeed = 0.025;
-    const numInfinities = 1;
+    const numInfinities = 100;
     infinities = [];
     
     for (let i = 0; i < numInfinities; i++) {
@@ -48,10 +48,6 @@ var s = function(sketch) {
 
   sketch.draw = function() {
     sketch.background(bg);
-    sketch.stroke(255);
-    sketch.fill(255);
-    sketch.textSize(30);
-    sketch.text(Math.floor(sketch.frameRate()), 100, 100);
 
     for (let infinity of infinities) {
       infinity.update(sketch);
