@@ -22,7 +22,7 @@ var s = function(sketch) {
     const b = sketch.createVector(0.5,0.5,0.5);
     const c = sketch.createVector(1.0,1.0,1.0);
     const d = sketch.createVector(0.0, 0.33, 0.67);
-    palette = new Palette(sketch,a,b,c,d)
+    palette = new Palette(sketch,a,b,c,d);
 
     const minRadius = w / 6.0;
     const maxRadius = w / 3.0;
